@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import Preloader from '../../layouts/Preloader/Preloader';
-import { fetchTopSalesRequest } from '../../redux/slices/topSalesSlice';
+import { fetchTopSalesItemsRequest } from '../../redux/slices/topSalesSlice';
 import Product from '../Product/Product';
 import './topsales.css';
 
@@ -10,7 +10,7 @@ const TopSales = () => {
 	const { items, loading, error } = useAppSelector(state => state.topSales);
 
 	useEffect(() => {
-		dispatch(fetchTopSalesRequest());
+		dispatch(fetchTopSalesItemsRequest());
 	}, [dispatch]);
 
 	useEffect(() => {
