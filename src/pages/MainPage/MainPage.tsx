@@ -1,3 +1,4 @@
+import Catalog from '../../components/Catalog/Catalog';
 import TopSales from '../../components/TopSales/TopSales';
 import Banner from '../../layouts/Banner/Banner';
 
@@ -9,6 +10,7 @@ const MainPage = () => {
 					<div className='col'>
 						<Banner />
 						<TopSales />
+						<Catalog />
 					</div>
 				</div>
 			</main>
