@@ -1,11 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import { saga } from '../saga/saga';
+import topSalesReducer from '../slices/topSalesSlice';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = configureStore({
 	devTools: true,
-	reducer: {},
+	reducer: {
+		topSales: topSalesReducer,
+	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
 });
