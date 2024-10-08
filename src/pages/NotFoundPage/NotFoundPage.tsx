@@ -1,5 +1,4 @@
 import Banner from '../../layouts/Banner/Banner';
-import './notfoundpage.css';
 
 const NotFoundPage = () => {
 	return (

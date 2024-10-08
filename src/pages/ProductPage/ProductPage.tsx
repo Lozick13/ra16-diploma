@@ -1,4 +1,4 @@
-import classes from './productpage.module.css';
+import './productpage.css';
 
 const ProductPage = () => {
 return (

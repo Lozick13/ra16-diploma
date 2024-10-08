@@ -1,4 +1,4 @@
-import classes from './catalogpage.module.css';
+import './catalogpage.css';
 
 const CatalogPage = () => {
 return (

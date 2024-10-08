@@ -1,4 +1,4 @@
-import classes from './cartpage.module.css';
+import './cartpage.css';
 
 const CartPage = () => {
 return (
