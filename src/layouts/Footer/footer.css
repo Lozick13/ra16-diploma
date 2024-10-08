@@ -1,0 +1,15 @@
+.footer {
+	padding: 0 25px;
+}
+
+.footer-copyright {
+	font-size: 0.8em;
+}
+
+.footer-contacts-phone {
+	display: block;
+}
+
+.footer-contacts-email {
+	display: block;
+}
