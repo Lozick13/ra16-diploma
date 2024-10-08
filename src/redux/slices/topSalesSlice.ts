@@ -18,15 +18,15 @@ const topSalesSlice = createSlice({
 		setTopSalesItems: (state, action: PayloadAction<Item[]>) => {
 			state.items = action.payload;
 		},
-		fetchTopSalesRequest: state => {
+		fetchTopSalesItemsRequest: state => {
 			state.loading = true;
 			state.error = null;
 		},
-		fetchTopSalesFailure: (state, action: PayloadAction<string>) => {
+		fetchTopSalesItemsFailure: (state, action: PayloadAction<string>) => {
 			state.loading = false;
 			state.error = action.payload;
 		},
-		fetchTopSalesSuccess: state => {
+		fetchTopSalesItemsSuccess: state => {
 			state.loading = false;
 			state.error = null;
 		},
@@ -34,9 +34,9 @@ const topSalesSlice = createSlice({
 });
 
 export const {
-	fetchTopSalesRequest,
-	fetchTopSalesFailure,
-	fetchTopSalesSuccess,
+	fetchTopSalesItemsRequest,
+	fetchTopSalesItemsFailure,
+	fetchTopSalesItemsSuccess,
 	setTopSalesItems,
 } = topSalesSlice.actions;
 
