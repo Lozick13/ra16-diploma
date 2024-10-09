@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import { saga } from '../saga';
+import categoriesReducer from '../slices/categoriesSlice';
 import itemsReducer from '../slices/itemsSlice';
 import topSalesReducer from '../slices/topSalesSlice';
 
@@ -10,6 +11,7 @@ const store = configureStore({
 	reducer: {
 		topSales: topSalesReducer,
 		items: itemsReducer,
+		categories: categoriesReducer,
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
