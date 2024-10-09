@@ -12,10 +12,10 @@ const Catalog: FC<{ search?: boolean }> = ({ search = false }) => {
 	const dispatch = useAppDispatch();
 	const {
 		items,
-		loading,
-		error,
-		offsetError,
-		offsetLoading,
+		itemsLoading,
+		itemsError,
+		offsetItemsError,
+		offsetItemsLoading,
 		fetchOffsetItems,
 	} = useAppSelector(state => state.items);
 
@@ -24,16 +24,20 @@ const Catalog: FC<{ search?: boolean }> = ({ search = false }) => {
 	}, [dispatch]);
 
 	useEffect(() => {
-		if (error) console.error(error);
-	}, [error]);
+		if (itemsError) console.error(itemsError);
+	}, [itemsError]);
+
+	useEffect(() => {
+		if (offsetItemsError) console.error(offsetItemsError);
+	}, [offsetItemsError]);
 
 	return (
 		<>
-			{!error && (
+			{!itemsError && (
 				<section className='catalog'>
 					<h2 className='text-center'>Каталог</h2>
-					{loading && <Preloader />}
-					{items && !loading && (
+					{itemsLoading && <Preloader />}
+					{items && !itemsLoading && (
 						<>
 							{search && (
 								<form className='catalog-search-form form-inline'>
@@ -80,8 +84,8 @@ const Catalog: FC<{ search?: boolean }> = ({ search = false }) => {
 									/>
 								))}
 							</div>
-							{offsetLoading && <Preloader />}
-							{fetchOffsetItems && !offsetLoading && (
+							{offsetItemsLoading && <Preloader />}
+							{fetchOffsetItems && !offsetItemsLoading && (
 								<div className='text-center'>
 									<button
 										onClick={() =>
@@ -89,7 +93,7 @@ const Catalog: FC<{ search?: boolean }> = ({ search = false }) => {
 										}
 										className='btn btn-outline-primary'
 									>
-										{!offsetError ? 'Загрузить ещё' : 'Попробовать ещё'}
+										{!offsetItemsError ? 'Загрузить ещё' : 'Попробовать ещё'}
 									</button>
 								</div>
 							)}

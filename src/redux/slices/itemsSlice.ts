@@ -3,17 +3,17 @@ import { Item } from '../../models/Item';
 
 const initialState: {
 	items: Item[];
-	loading: boolean;
-	error: string | null;
-	offsetLoading: boolean;
-	offsetError: string | null;
+	itemsLoading: boolean;
+	itemsError: string | null;
+	offsetItemsLoading: boolean;
+	offsetItemsError: string | null;
 	fetchOffsetItems: boolean;
 } = {
 	items: [],
-	loading: false,
-	error: null,
-	offsetLoading: false,
-	offsetError: null,
+	itemsLoading: false,
+	itemsError: null,
+	offsetItemsLoading: false,
+	offsetItemsError: null,
 	fetchOffsetItems: true,
 };
 
@@ -29,30 +29,30 @@ const itemsSlice = createSlice({
 		},
 
 		fetchItemsRequest: state => {
-			state.loading = true;
-			state.error = null;
+			state.itemsLoading = true;
+			state.itemsError = null;
 		},
 		fetchItemsFailure: (state, action: PayloadAction<string>) => {
-			state.loading = false;
-			state.error = action.payload;
+			state.itemsLoading = false;
+			state.itemsError = action.payload;
 		},
 		fetchItemsSuccess: state => {
-			state.loading = false;
-			state.error = null;
+			state.itemsLoading = false;
+			state.itemsError = null;
 		},
 
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		fetchOffsetItemsRequest: (state, _action: PayloadAction<number>) => {
-			state.offsetLoading = true;
-			state.offsetError = null;
+			state.offsetItemsLoading = true;
+			state.offsetItemsError = null;
 		},
 		fetchOffsetItemsFailure: (state, action: PayloadAction<string>) => {
-			state.offsetLoading = false;
-			state.offsetError = action.payload;
+			state.offsetItemsLoading = false;
+			state.offsetItemsError = action.payload;
 		},
 		fetchOffsetItemsSuccess: (state, action: PayloadAction<number>) => {
-			state.offsetLoading = false;
-			state.offsetError = null;
+			state.offsetItemsLoading = false;
+			state.offsetItemsError = null;
 
 			if (action.payload < 6) state.fetchOffsetItems = false;
 		},

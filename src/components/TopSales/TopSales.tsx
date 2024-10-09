@@ -7,25 +7,27 @@ import './topsales.css';
 
 const TopSales = () => {
 	const dispatch = useAppDispatch();
-	const { items, loading, error } = useAppSelector(state => state.topSales);
+	const { topSalesItems, topSalesLoading, topSalesError } = useAppSelector(
+		state => state.topSales
+	);
 
 	useEffect(() => {
 		dispatch(fetchTopSalesItemsRequest());
 	}, [dispatch]);
 
 	useEffect(() => {
-		if (error) console.error(error);
-	}, [error]);
+		if (topSalesError) console.error(topSalesError);
+	}, [topSalesError]);
 
 	return (
 		<>
-			{!error && (
+			{!topSalesError && (
 				<section className='top-sales'>
 					<h2 className='text-center'>Хиты продаж!</h2>
-					{loading && <Preloader />}
-					{items && !loading && (
+					{topSalesLoading && <Preloader />}
+					{topSalesItems && !topSalesLoading && (
 						<div className='row'>
-							{items.map(item => (
+							{topSalesItems.map(item => (
 								<Product
 									key={item.id}
 									id={item.id}

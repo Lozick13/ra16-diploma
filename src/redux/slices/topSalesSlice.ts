@@ -2,13 +2,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Item } from '../../models/Item';
 
 const initialState: {
-	items: Item[];
-	loading: boolean;
-	error: string | null;
+	topSalesItems: Item[];
+	topSalesLoading: boolean;
+	topSalesError: string | null;
 } = {
-	items: [],
-	loading: false,
-	error: null,
+	topSalesItems: [],
+	topSalesLoading: false,
+	topSalesError: null,
 };
 
 const topSalesSlice = createSlice({
@@ -16,19 +16,19 @@ const topSalesSlice = createSlice({
 	initialState,
 	reducers: {
 		setTopSalesItems: (state, action: PayloadAction<Item[]>) => {
-			state.items = action.payload;
+			state.topSalesItems = action.payload;
 		},
 		fetchTopSalesItemsRequest: state => {
-			state.loading = true;
-			state.error = null;
+			state.topSalesLoading = true;
+			state.topSalesError = null;
 		},
 		fetchTopSalesItemsFailure: (state, action: PayloadAction<string>) => {
-			state.loading = false;
-			state.error = action.payload;
+			state.topSalesLoading = false;
+			state.topSalesError = action.payload;
 		},
 		fetchTopSalesItemsSuccess: state => {
-			state.loading = false;
-			state.error = null;
+			state.topSalesLoading = false;
+			state.topSalesError = null;
 		},
 	},
 });
