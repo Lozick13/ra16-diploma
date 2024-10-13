@@ -1,7 +1,9 @@
+import { URL } from './url';
+
 export const fetchTopSales = async () => {
-	const response = await fetch('http://localhost:7070/api/top-sales');
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-  return await response.json();
-}
+	const response = await fetch(`${URL}/top-sales`);
+	if (!response.ok) {
+		throw new Error(response.statusText);
+	}
+	return await response.json();
+};

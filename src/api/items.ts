@@ -1,3 +1,5 @@
+import { URL } from './url';
+
 export const fetchItems = async (params?: {
 	categoryId?: number;
 	offset?: number;
@@ -7,7 +9,7 @@ export const fetchItems = async (params?: {
 		URLParams.append('categoryId', params.categoryId.toString());
 	if (params?.offset) URLParams.append('offset', params.offset.toString());
 
-	const response = await fetch(`http://localhost:7070/api/items?${URLParams}`);
+	const response = await fetch(`${URL}/items?${URLParams}`);
 	if (!response.ok) {
 		throw new Error(response.statusText);
 	}
