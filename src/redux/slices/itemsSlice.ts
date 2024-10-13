@@ -5,16 +5,12 @@ const initialState: {
 	items: Item[];
 	itemsLoading: boolean;
 	itemsError: string | null;
-	offsetItemsLoading: boolean;
-	offsetItemsError: string | null;
-	fetchOffsetItems: boolean;
+	fetchItems: boolean;
 } = {
 	items: [],
 	itemsLoading: false,
 	itemsError: null,
-	offsetItemsLoading: false,
-	offsetItemsError: null,
-	fetchOffsetItems: true,
+	fetchItems: true,
 };
 
 const itemsSlice = createSlice({
@@ -28,33 +24,26 @@ const itemsSlice = createSlice({
 			state.items = [...state.items, ...action.payload];
 		},
 
-		fetchItemsRequest: state => {
+		fetchItemsRequest: (
+			state,
+			// eslint-disable-next-line @typescript-eslint/no-unused-vars
+			_action: PayloadAction<
+				{ categoryId?: number; offset?: number } | undefined
+			>
+		) => {
 			state.itemsLoading = true;
 			state.itemsError = null;
+			state.fetchItems = true;
 		},
 		fetchItemsFailure: (state, action: PayloadAction<string>) => {
 			state.itemsLoading = false;
 			state.itemsError = action.payload;
 		},
-		fetchItemsSuccess: state => {
+		fetchItemsSuccess: (state, action: PayloadAction<number | undefined>) => {
 			state.itemsLoading = false;
 			state.itemsError = null;
-		},
 
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		fetchOffsetItemsRequest: (state, _action: PayloadAction<number>) => {
-			state.offsetItemsLoading = true;
-			state.offsetItemsError = null;
-		},
-		fetchOffsetItemsFailure: (state, action: PayloadAction<string>) => {
-			state.offsetItemsLoading = false;
-			state.offsetItemsError = action.payload;
-		},
-		fetchOffsetItemsSuccess: (state, action: PayloadAction<number>) => {
-			state.offsetItemsLoading = false;
-			state.offsetItemsError = null;
-
-			if (action.payload < 6) state.fetchOffsetItems = false;
+			if (Number(action.payload) < 6) state.fetchItems = false;
 		},
 	},
 });
@@ -63,9 +52,6 @@ export const {
 	fetchItemsRequest,
 	fetchItemsFailure,
 	fetchItemsSuccess,
-	fetchOffsetItemsRequest,
-	fetchOffsetItemsFailure,
-	fetchOffsetItemsSuccess,
 	setItems,
 	addItems,
 } = itemsSlice.actions;
