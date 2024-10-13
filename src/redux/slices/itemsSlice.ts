@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Item } from '../../models/Item';
+import { Item } from '../../api/types';
 
 const initialState: {
 	items: Item[];

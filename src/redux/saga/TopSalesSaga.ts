@@ -1,6 +1,6 @@
 import { put, retry, takeLatest } from 'redux-saga/effects';
 import { fetchTopSales } from '../../api';
-import { Item } from '../../models/Item';
+import { Item } from '../../api/types';
 import {
 	fetchTopSalesItemsFailure,
 	fetchTopSalesItemsRequest,

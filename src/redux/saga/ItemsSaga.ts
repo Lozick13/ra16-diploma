@@ -1,7 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { put, retry, takeLatest } from 'redux-saga/effects';
 import { fetchItems } from '../../api';
-import { Item } from '../../models/Item';
+import { Item } from '../../api/types';
 import {
 	addItems,
 	fetchItemsFailure,

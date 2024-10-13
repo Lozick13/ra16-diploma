@@ -1,6 +1,6 @@
 import { put, retry, takeLatest } from 'redux-saga/effects';
 import { fetchCategories } from '../../api';
-import { Category } from '../../models/Category';
+import { Category } from '../../api/types';
 import {
 	fetchCategoriesFailure,
 	fetchCategoriesRequest,
