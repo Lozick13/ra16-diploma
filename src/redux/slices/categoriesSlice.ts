@@ -3,12 +3,12 @@ import { Category } from '../../models/Category';
 
 const initialState: {
 	categories: Category[];
-	CategoriesLoading: boolean;
-	CategoriesError: string | null;
+	categoriesLoading: boolean;
+	categoriesError: string | null;
 } = {
 	categories: [],
-	CategoriesLoading: false,
-	CategoriesError: null,
+	categoriesLoading: false,
+	categoriesError: null,
 };
 
 const categoriesSlice = createSlice({
@@ -19,16 +19,16 @@ const categoriesSlice = createSlice({
 			state.categories = action.payload;
 		},
 		fetchCategoriesRequest: state => {
-			state.CategoriesLoading = true;
-			state.CategoriesError = null;
+			state.categoriesLoading = true;
+			state.categoriesError = null;
 		},
 		fetchCategoriesFailure: (state, action: PayloadAction<string>) => {
-			state.CategoriesLoading = false;
-			state.CategoriesError = action.payload;
+			state.categoriesLoading = false;
+			state.categoriesError = action.payload;
 		},
 		fetchCategoriesSuccess: state => {
-			state.CategoriesLoading = false;
-			state.CategoriesError = null;
+			state.categoriesLoading = false;
+			state.categoriesError = null;
 		},
 	},
 });

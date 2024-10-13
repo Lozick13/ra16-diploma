@@ -1,5 +1,5 @@
 import { put, retry, takeLatest } from 'redux-saga/effects';
-import { fetchItems } from '../../api';
+import { fetchCategories } from '../../api';
 import { Category } from '../../models/Category';
 import {
 	fetchCategoriesFailure,
@@ -13,7 +13,11 @@ const retryDelay = 500;
 
 function* workerFetchCategoriesRequest() {
 	try {
-		const data: Category[] = yield retry(retryCount, retryDelay, fetchItems);
+		const data: Category[] = yield retry(
+			retryCount,
+			retryDelay,
+			fetchCategories
+		);
 
 		yield put(setCategories(data));
 		yield put(fetchCategoriesSuccess());
