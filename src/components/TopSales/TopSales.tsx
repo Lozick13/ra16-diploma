@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import Preloader from '../../layouts/Preloader/Preloader';
 import { fetchTopSalesItemsRequest } from '../../redux/slices/topSalesSlice';
+import Preloader from '../Preloader/Preloader';
 import Product from '../Product/Product';
 import './topsales.css';
 

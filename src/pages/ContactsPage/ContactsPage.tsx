@@ -1,4 +1,4 @@
-import Banner from '../../layouts/Banner/Banner';
+import Banner from '../../components/Banner/Banner';
 
 const ContactsPage = () => {
 	return (

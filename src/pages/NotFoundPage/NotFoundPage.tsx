@@ -1,4 +1,4 @@
-import Banner from '../../layouts/Banner/Banner';
+import Banner from '../../components/Banner/Banner';
 
 const NotFoundPage = () => {
 	return (
@@ -6,7 +6,7 @@ const NotFoundPage = () => {
 			<main className='container'>
 				<div className='row'>
 					<div className='col'>
-						<Banner/>
+						<Banner />
 						<section className='top-sales'>
 							<h2 className='text-center'>Страница не найдена</h2>
 							<p>Извините, такая страница не найдена!</p>

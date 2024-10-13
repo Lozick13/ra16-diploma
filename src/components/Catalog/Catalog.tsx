@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import Preloader from '../../layouts/Preloader/Preloader';
 import { fetchCategoriesRequest } from '../../redux/slices/categoriesSlice';
 import { fetchItemsRequest, setItems } from '../../redux/slices/itemsSlice';
+import Preloader from '../Preloader/Preloader';
 import Product from '../Product/Product';
 import './catalog.css';
 

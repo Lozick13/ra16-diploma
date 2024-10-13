@@ -1,6 +1,6 @@
+import Banner from '../../components/Banner/Banner';
 import Catalog from '../../components/Catalog/Catalog';
 import TopSales from '../../components/TopSales/TopSales';
-import Banner from '../../layouts/Banner/Banner';
 
 const MainPage = () => {
 	return (

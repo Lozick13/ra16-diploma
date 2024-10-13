@@ -1,6 +1,6 @@
-import FooterPay from '../../components/FooterPay/FooterPay';
-import FooterSocialLink from '../../components/FooterSocialLink/FooterSocialLink';
 import ColumnNavbar from '../../ui/lists/ColumnNavbar/ColumnNavbar';
+import FooterPay from '../FooterPay/FooterPay';
+import FooterSocialLink from '../FooterSocialLink/FooterSocialLink';
 import './footer.css';
 
 const Footer = () => {
@@ -58,7 +58,7 @@ const Footer = () => {
 							>
 								office@bosanoga.ru
 							</a>
-							<FooterSocialLink items={['twitter', 'vk']}/>
+							<FooterSocialLink items={['twitter', 'vk']} />
 						</section>
 					</div>
 				</div>
