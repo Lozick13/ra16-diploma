@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import RowNavbar from '../lists/RowNavbar/RowNavbar';
+import RowNavbar from '../../components/lists/RowNavbar/RowNavbar';
 import './header.css';
 
 const Header = () => {

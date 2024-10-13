@@ -1,6 +1,6 @@
+import ColumnNavbar from '../../components/lists/ColumnNavbar/ColumnNavbar';
 import FooterPay from '../FooterPay/FooterPay';
 import FooterSocialLink from '../FooterSocialLink/FooterSocialLink';
-import ColumnNavbar from '../lists/ColumnNavbar/ColumnNavbar';
 import './footer.css';
 
 const Footer = () => {
