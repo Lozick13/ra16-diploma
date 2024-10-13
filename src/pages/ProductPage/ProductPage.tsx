@@ -1,11 +1,7 @@
 import './productpage.css';
 
 const ProductPage = () => {
-return (
-<>
-
-</>
-);
+  return <></>;
 };
 
 export default ProductPage;

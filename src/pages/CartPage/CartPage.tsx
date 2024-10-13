@@ -1,11 +1,7 @@
 import './cartpage.css';
 
 const CartPage = () => {
-return (
-<>
-
-</>
-);
+  return <></>;
 };
 
 export default CartPage;
