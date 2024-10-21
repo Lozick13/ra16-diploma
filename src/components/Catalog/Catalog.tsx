@@ -125,9 +125,6 @@ const Catalog: FC<{ search?: boolean }> = ({ search = false }) => {
                   onClick={() => {
                     setIsInitialized(false);
                     dispatch(setItems([]));
-                    setFetchItemsParams(prev => {
-                      return { ...prev, quest: undefined };
-                    });
                     setActiveCategory(category.id);
                   }}
                 >
