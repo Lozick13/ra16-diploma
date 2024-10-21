@@ -23,7 +23,7 @@ const Header = () => {
           <div className="col">
             <nav className="navbar navbar-expand-sm navbar-light bg-light">
               <Link className="navbar-brand" to={'/'}>
-                <img src="./assets/header-logo.png" alt="Bosa Noga" />
+                <img src="/assets/header-logo.png" alt="Bosa Noga" />
               </Link>
 
               <div className="collapse navbar-collapse" id="navbarMain">

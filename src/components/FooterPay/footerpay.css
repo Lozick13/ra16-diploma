@@ -10,7 +10,7 @@
 	border-radius: 8px;
 	background-color: #ffffff;
 	background-repeat: no-repeat;
-	background-image: url(./assets/footer-sprite.png);
+	background-image: url(/assets/footer-sprite.png);
 }
 .footer-pay-systems:not(:first-child) {
 	margin-left: 5px;
