@@ -1,3 +1,4 @@
+import Banner from '../../components/Banner/Banner';
 import Catalog from '../../components/Catalog/Catalog';
 import './catalogpage.css';
 
@@ -7,6 +8,7 @@ const CatalogPage = () => {
       <main className="container">
         <div className="row">
           <div className="col">
+            <Banner />
             <Catalog search={true} />
           </div>
         </div>
