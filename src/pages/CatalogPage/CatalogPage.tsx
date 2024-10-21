@@ -7,7 +7,7 @@ const CatalogPage = () => {
       <main className="container">
         <div className="row">
           <div className="col">
-            <Catalog />
+            <Catalog search={true} />
           </div>
         </div>
       </main>
