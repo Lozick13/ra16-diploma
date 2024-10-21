@@ -1,8 +1,20 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import RowNavbar from '../lists/RowNavbar/RowNavbar';
 import './header.css';
 
 const Header = () => {
+  const [searchActivity, setSearchActivity] = useState<boolean>(false);
+  const [searchData, setSearchData] = useState<string>('');
+
+  const navigate = useNavigate();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    navigate('/catalog', { state: { quest: searchData } });
+    setSearchData('');
+  };
+
   return (
     <>
       <header className="container">
@@ -25,12 +37,27 @@ const Header = () => {
                 <div>
                   <div className="header-controls-pics">
                     <form
+                      onSubmit={handleSearch}
                       data-id="search-form"
-                      className="header-controls-search-form form-inline"
+                      className={`header-controls-search-form form-inline ${
+                        !searchActivity ? 'invisible' : ''
+                      }`}
                     >
-                      <input className="form-control" placeholder="Поиск" />
+                      <input
+                        id="search"
+                        name="search"
+                        type="text"
+                        value={searchData}
+                        required={true}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                          setSearchData(e.target.value)
+                        }
+                        className="form-control"
+                        placeholder="Поиск"
+                      />
                     </form>
                     <div
+                      onClick={() => setSearchActivity(prev => !prev)}
                       data-id="search-expander"
                       className="header-controls-pic header-controls-search"
                     ></div>
