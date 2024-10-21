@@ -13,7 +13,7 @@ const Footer = () => {
               <h5>Информация</h5>
               <ColumnNavbar
                 items={[
-                  { text: 'О магазине', link: '/about', active: true },
+                  { text: 'О магазине', link: '/about' },
                   { text: 'Каталог', link: '/catalog' },
                   { text: 'Контакты', link: '/contacts' },
                 ]}
