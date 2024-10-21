@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import RowNavbar from '../lists/RowNavbar/RowNavbar';
 import './header.css';
 
@@ -7,6 +7,7 @@ const Header = () => {
   const [searchActivity, setSearchActivity] = useState<boolean>(false);
   const [searchData, setSearchData] = useState<string>('');
 
+  const location = useLocation();
   const navigate = useNavigate();
 
   const handleSearch = (e: React.FormEvent) => {
@@ -28,10 +29,22 @@ const Header = () => {
               <div className="collapse navbar-collapse" id="navbarMain">
                 <RowNavbar
                   items={[
-                    { text: 'Главная', link: '/', active: true },
-                    { text: 'Каталог', link: '/catalog' },
-                    { text: 'О магазине', link: '/about' },
-                    { text: 'Контакты', link: '/contacts' },
+                    { text: 'Главная', link: '/', active: location.pathname === '/' },
+                    {
+                      text: 'Каталог',
+                      link: '/catalog',
+                      active: location.pathname === '/catalog',
+                    },
+                    {
+                      text: 'О магазине',
+                      link: '/about',
+                      active: location.pathname === '/about',
+                    },
+                    {
+                      text: 'Контакты',
+                      link: '/contacts',
+                      active: location.pathname === '/contacts',
+                    },
                   ]}
                 />
                 <div>
