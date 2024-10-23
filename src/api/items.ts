@@ -16,3 +16,11 @@ export const fetchItems = async (params?: {
   }
   return await response.json();
 };
+
+export const fetchItem = async (id: number) => {
+  const response = await fetch(`${URL}/items/${id}`);
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+  return await response.json();
+};
