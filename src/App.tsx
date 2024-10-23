@@ -11,21 +11,21 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import ProductPage from './pages/ProductPage/ProductPage';
 
 function App() {
-	return (
-		<>
-			<Header />
-			<Routes>
-				<Route path='/' index element={<MainPage />} />
-				<Route path='/catalog' element={<CatalogPage />} />
-				<Route path='/about' element={<AboutPage />} />
-				<Route path='/contacts' element={<ContactsPage />} />
-				<Route path='/product/:id' element={<ProductPage />} />
-				<Route path='/cart' element={<CartPage />} />
-				<Route path='*' element={<NotFoundPage />} />
-			</Routes>
-			<Footer />
-		</>
-	);
+  return (
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" index element={<MainPage />} />
+        <Route path="/catalog" element={<CatalogPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="/catalog/:id" element={<ProductPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+      <Footer />
+    </>
+  );
 }
 
 export default App;

@@ -17,7 +17,7 @@ const Product: FC<{
           <div className="card-body card-body-wrap">
             <p className="card-text">{title}</p>
             <p className="card-text">{price} руб.</p>
-            <Link to={`/products/${id}`} className="btn btn-outline-primary">
+            <Link to={`/catalog/${id}`} className="btn btn-outline-primary">
               Заказать
             </Link>
           </div>
