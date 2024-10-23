@@ -19,7 +19,6 @@ const Catalog: FC<{ search?: boolean }> = ({ search = false }) => {
   );
 
   const [isInitialized, setIsInitialized] = useState<boolean>(false);
-  const [isEmpty, setIsEmpty] = useState<boolean>(false);
   const [activeCategory, setActiveCategory] = useState<number>(0);
   const [searchData, setSearchData] = useState<string>('');
   const [fetchItemsParams, setFetchItemsParams] = useState<{
@@ -37,15 +36,6 @@ const Catalog: FC<{ search?: boolean }> = ({ search = false }) => {
   };
 
   useEffect(() => {
-    if (location.state?.quest) {
-      setFetchItemsParams(prev => {
-        return { ...prev, quest: location.state.quest };
-      });
-      setSearchData(location.state.quest);
-    }
-  }, [location]);
-
-  useEffect(() => {
     dispatch(fetchCategoriesRequest());
   }, [dispatch]);
 
@@ -56,26 +46,32 @@ const Catalog: FC<{ search?: boolean }> = ({ search = false }) => {
   }, [dispatch, fetchItemsParams]);
 
   useEffect(() => {
+    if (location.state?.quest) {
+      setFetchItemsParams(prev => {
+        return { ...prev, quest: location.state.quest };
+      });
+      setSearchData(location.state.quest);
+    }
+  }, [location]);
+
+  useEffect(() => {
     setFetchItemsParams(prev => {
       return { ...prev, categoryId: activeCategory || undefined };
     });
   }, [activeCategory]);
 
   useEffect(() => {
-    if (!isInitialized && itemsError) {
-      setIsEmpty(true);
-      setIsInitialized(true);
-    } else if (!isInitialized && items.length > 0) {
+    if (!isInitialized && items.length > 0) {
       setIsInitialized(true);
     }
-  }, [items, isInitialized, itemsError]);
+  }, [items, isInitialized]);
 
   useEffect(() => {
     if (categoriesError) console.error(categoriesError);
     if (itemsError) console.error(itemsError);
   }, [categoriesError, itemsError]);
 
-  if (isEmpty) {
+  if (!isInitialized && itemsError) {
     return null;
   }
 
@@ -102,7 +98,7 @@ const Catalog: FC<{ search?: boolean }> = ({ search = false }) => {
 
       <ul className="catalog-categories nav justify-content-center">
         {categoriesLoading && <Preloader />}
-        {!categoriesLoading && categories && (
+        {!categoriesLoading && !categoriesError && (
           <>
             <li key={0} className="nav-item">
               <a
@@ -110,8 +106,8 @@ const Catalog: FC<{ search?: boolean }> = ({ search = false }) => {
                 href="javascript:void(0);"
                 onClick={() => {
                   setIsInitialized(false);
-                  dispatch(setItems([]));
                   setActiveCategory(0);
+                  dispatch(setItems([]));
                 }}
               >
                 Все
@@ -124,8 +120,8 @@ const Catalog: FC<{ search?: boolean }> = ({ search = false }) => {
                   href="javascript:void(0);"
                   onClick={() => {
                     setIsInitialized(false);
-                    dispatch(setItems([]));
                     setActiveCategory(category.id);
+                    dispatch(setItems([]));
                   }}
                 >
                   {category.title}
