@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
+import { addCartItem } from '../../redux/slices/cartSlice';
 import { fetchItemRequest } from '../../redux/slices/itemSlice';
 import Preloader from '../Preloader/Preloader';
 
@@ -116,6 +117,18 @@ const ProductDetails = () => {
                     className={`btn btn-danger btn-block btn-lg ${
                       !selectedSize ? 'disabled' : ''
                     }`}
+                    disabled={!selectedSize}
+                    onClick={() =>
+                      dispatch(
+                        addCartItem({
+                          id: item.id,
+                          title: item.title,
+                          size: selectedSize,
+                          count: count,
+                          price: item.price,
+                        }),
+                      )
+                    }
                   >
                     В корзину
                   </button>
