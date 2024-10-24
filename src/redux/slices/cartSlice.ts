@@ -22,7 +22,10 @@ const cartSlice = createSlice({
         return;
       }
 
-      state.cart.push(action.payload);
+      state.cart.push({
+        ...action.payload,
+        totalPrice: action.payload.count * action.payload.price,
+      });
     },
     removeCartItem: (state, action: PayloadAction<{ id: number; size: string }>) => {
       state.cart = state.cart.filter(

@@ -23,5 +23,5 @@ export interface Cart {
   size: string;
   count: number;
   price: number;
-  totalPrice?: number;
+  totalPrice: number;
 }
