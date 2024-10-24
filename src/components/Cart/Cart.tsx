@@ -23,7 +23,7 @@ const Cart = () => {
           </thead>
           <tbody>
             {cart.map((item, index) => (
-              <tr>
+              <tr key={index}>
                 <td scope="row">{index + 1}</td>
                 <td>
                   <a href="/products/1.html">{item.title}</a>
