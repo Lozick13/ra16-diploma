@@ -4,7 +4,7 @@ import { Cart } from '../../api/types';
 const initialState: {
   cart: Cart[];
 } = {
-  cart: [],
+  cart: JSON.parse(localStorage.getItem('cart') || '[]'),
 };
 
 const cartSlice = createSlice({
@@ -26,11 +26,15 @@ const cartSlice = createSlice({
         ...action.payload,
         totalPrice: action.payload.count * action.payload.price,
       });
+
+      localStorage.setItem('cart', JSON.stringify(state.cart));
     },
     removeCartItem: (state, action: PayloadAction<{ id: number; size: string }>) => {
       state.cart = state.cart.filter(
         item => item.id !== action.payload.id && item.size !== action.payload.size,
       );
+
+      localStorage.setItem('cart', JSON.stringify(state.cart));
     },
   },
 });
