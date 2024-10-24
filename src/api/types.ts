@@ -16,3 +16,12 @@ export interface Item {
   season?: string;
   sizes?: { size?: string; available?: boolean }[];
 }
+
+export interface Cart {
+  id: number;
+  title: string;
+  size: string;
+  count: number;
+  price: number;
+  totalPrice?: number;
+}
