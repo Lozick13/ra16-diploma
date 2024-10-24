@@ -5,6 +5,7 @@ import cartReducer from '../slices/cartSlice';
 import categoriesReducer from '../slices/categoriesSlice';
 import itemReducer from '../slices/itemSlice';
 import itemsReducer from '../slices/itemsSlice';
+import orderReducer from '../slices/orderSlice';
 import topSalesReducer from '../slices/topSalesSlice';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -16,6 +17,7 @@ const store = configureStore({
     items: itemsReducer,
     item: itemReducer,
     cart: cartReducer,
+    order: orderReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),

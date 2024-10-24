@@ -25,3 +25,12 @@ export interface Cart {
   price: number;
   totalPrice: number;
 }
+
+export interface Order {
+  owner: { phone: string; address: string };
+  items: {
+    id: number;
+    price: number;
+    count: number;
+  }[];
+}
