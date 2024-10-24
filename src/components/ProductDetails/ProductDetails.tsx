@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { addCartItem } from '../../redux/slices/cartSlice';
 import { fetchItemRequest } from '../../redux/slices/itemSlice';
 import Preloader from '../Preloader/Preloader';
 
 const ProductDetails = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { item, itemLoading, itemError } = useAppSelector(state => state.item);
   const { id } = useParams();
@@ -118,7 +119,7 @@ const ProductDetails = () => {
                       !selectedSize ? 'disabled' : ''
                     }`}
                     disabled={!selectedSize}
-                    onClick={() =>
+                    onClick={() => {
                       dispatch(
                         addCartItem({
                           id: item.id,
@@ -126,9 +127,11 @@ const ProductDetails = () => {
                           size: selectedSize,
                           count: count,
                           price: item.price,
+                          totalPrice: count * item.price,
                         }),
-                      )
-                    }
+                      );
+                      navigate('/cart');
+                    }}
                   >
                     В корзину
                   </button>

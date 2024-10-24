@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../hooks';
 import RowNavbar from '../lists/RowNavbar/RowNavbar';
 import './header.css';
 
 const Header = () => {
   const [searchActivity, setSearchActivity] = useState<boolean>(false);
   const [searchData, setSearchData] = useState<string>('');
+  const { cart } = useAppSelector(state => state.cart);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -74,8 +76,13 @@ const Header = () => {
                       data-id="search-expander"
                       className="header-controls-pic header-controls-search"
                     ></div>
-                    <div className="header-controls-pic header-controls-cart">
-                      <div className="header-controls-cart-full">1</div>
+                    <div
+                      className="header-controls-pic header-controls-cart"
+                      onClick={() => navigate('/cart')}
+                    >
+                      {cart.length !== 0 && (
+                        <div className="header-controls-cart-full">{cart.length}</div>
+                      )}
                       <div className="header-controls-cart-menu"></div>
                     </div>
                   </div>
