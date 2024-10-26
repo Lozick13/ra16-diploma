@@ -37,11 +37,25 @@ const orderSlice = createSlice({
       state.orderError = null;
       state.orderSuccess = true;
     },
+    clearOrder: state => {
+      state.order = {
+        owner: { phone: '', address: '' },
+        items: [],
+      };
+      state.orderError = null;
+      state.orderLoading = false;
+      state.orderSuccess = false;
+    },
   },
 });
 
-export const { setOrder, sendOrderRequest, sendOrderFailure, sendOrderSuccess } =
-  orderSlice.actions;
+export const {
+  setOrder,
+  sendOrderRequest,
+  sendOrderFailure,
+  sendOrderSuccess,
+  clearOrder,
+} = orderSlice.actions;
 
 const orderReducer = orderSlice.reducer;
 export default orderReducer;

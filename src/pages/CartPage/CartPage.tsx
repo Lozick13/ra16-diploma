@@ -1,9 +1,12 @@
 import Banner from '../../components/Banner/Banner';
 import Cart from '../../components/Cart/Cart';
 import Order from '../../components/Order/Order';
+import { useAppSelector } from '../../hooks';
 import './cartpage.css';
 
 const CartPage = () => {
+  const { cart } = useAppSelector(state => state.cart);
+
   return (
     <>
       <main className="container">
@@ -11,7 +14,7 @@ const CartPage = () => {
           <div className="col">
             <Banner />
             <Cart />
-            <Order />
+            {cart.length !== 0 && <Order />}
           </div>
         </div>
       </main>

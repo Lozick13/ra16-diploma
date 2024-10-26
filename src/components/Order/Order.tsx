@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { sendOrderRequest, setOrder } from '../../redux/slices/orderSlice';
+import { clearCart } from '../../redux/slices/cartSlice';
+import { clearOrder, sendOrderRequest, setOrder } from '../../redux/slices/orderSlice';
 import Preloader from '../Preloader/Preloader';
 
 const Order = () => {
@@ -37,8 +38,10 @@ const Order = () => {
     }
     if (orderSuccess) {
       alert('Заказ отправлен успешно');
+      dispatch(clearCart());
+      dispatch(clearOrder());
     }
-  }, [orderError, orderSuccess]);
+  }, [dispatch, orderError, orderSuccess]);
 
   return (
     <>
