@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchCategoriesRequest } from '../../redux/slices/categoriesSlice';
 import { fetchItemsRequest, setItems } from '../../redux/slices/itemsSlice';
+import BrokenRequest from '../BrokenRequest/BrokenRequest';
 import Preloader from '../Preloader/Preloader';
 import Product from '../Product/Product';
 import './catalog.css';
@@ -31,7 +32,7 @@ const Catalog: FC<{ search?: boolean }> = ({ search = false }) => {
     e.preventDefault();
 
     setFetchItemsParams(prev => {
-      return { ...prev, quest: searchData };
+      return { categoryId: prev.categoryId, quest: searchData };
     });
   };
 
@@ -72,7 +73,15 @@ const Catalog: FC<{ search?: boolean }> = ({ search = false }) => {
   }, [categoriesError, itemsError]);
 
   if (!isInitialized && itemsError) {
-    return null;
+    return (
+      <BrokenRequest
+        click={() =>
+          setFetchItemsParams(prev => {
+            return { ...prev };
+          })
+        }
+      />
+    );
   }
 
   return (
@@ -133,6 +142,7 @@ const Catalog: FC<{ search?: boolean }> = ({ search = false }) => {
       </ul>
 
       {itemsLoading && !isInitialized && !categoriesLoading && <Preloader />}
+      {!itemsLoading && !isInitialized && <span>Ничего не найдено</span>}
       {isInitialized && (
         <>
           <div className="row">
@@ -153,16 +163,9 @@ const Catalog: FC<{ search?: boolean }> = ({ search = false }) => {
             {!itemsLoading && fetchItems && items.length >= 6 && (
               <button
                 onClick={() => {
-                  setFetchItemsParams({ offset: items.length });
-                  if (activeCategory === 0) {
-                    dispatch(fetchItemsRequest({ offset: items.length }));
-                  } else
-                    dispatch(
-                      fetchItemsRequest({
-                        categoryId: activeCategory,
-                        offset: items.length,
-                      }),
-                    );
+                  setFetchItemsParams(prev => {
+                    return { ...prev, offset: items.length };
+                  });
                 }}
                 className="btn btn-outline-primary"
               >

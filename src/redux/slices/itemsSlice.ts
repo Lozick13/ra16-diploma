@@ -28,7 +28,7 @@ const itemsSlice = createSlice({
 			state,
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			_action: PayloadAction<
-				{ categoryId?: number; offset?: number } | undefined
+				{ categoryId?: number; offset?: number; quest?: string } | undefined
 			>
 		) => {
 			state.itemsLoading = true;
